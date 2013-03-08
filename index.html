@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/style.css" />
+	</head>
+	<body>
+		
+		<div class="slide" id="slide-1">
+			<h1 class="big">I &lt;3 GIT</h1>
+		</div>
+		
+		<div class="slide" id="slide-2">
+			<h1 class="medium">Branching</h1>
+		</div>
+
+		<div class="slide" id="slide-3">
+			<h2>Three important parts of Git:</h2>
+			<ol>
+				<li>The HEAD: your last commit</li>
+				<li>The Index: stage for your next commit</li>
+				<li>Working Directory: your files</li>
+			</ol>
+		</div>
+
+		<div class="slide" id="slide-4">
+			<h2 class="cmd">git submodule update</h2>
+			<p>Update the commit of my submodule inline with what the master repository says it should be on.</p>
+			<p>The master project does not care about anything more in the sub repository, other than the commit it is currently pointing at.</p>
+		</div>
+
+		<div class="slide" id="slide-5">
+			<h2 class="cmd">git reset HEAD <span>--hard</span></h2>
+			<p>HEAD points to the last snapshop, the current commit you are on. It will discard any changes staged in the index and revert the index back to the current commit (HEAD).</p>
+			<p>By default, this won't affect your working directory (the actual files). Use the --hard flag to physically reset the changes made to files following your last commit.</p>
+		</div>
+
+		<div class="slide" id="slide-6">
+			<h2 class="cmd">git reset HEAD~1</h2>
+			<p>If you do a bad commit, you can undo it by resetting to <code>HEAD~1</code>. That is, The HEAD will point back at the commit before your last. Your changes will still be staged in the index, ready to commit again, or modify.
+		</div>
+
+		<div class="slide" id="slide-7">
+			<h2 class="cmd">git reset --soft HEAD~1</h2>
+			<h2 class="cmd">git reset <span>--mixed</span></h2>
+			<h2 class="cmd">git reset --hard HEAD~1</h2>
+		</div>
+
+		<div class="slide" id="slide-8">
+			<h2 class="cmd">git checkout OBJECT <span>&lt;files&gt;</span></h2>
+			<p>Modify the files in your working directory to match that of OBJECT. This object will usually be identified by a branch name.</p>
+			<p>Checking out a commit hash means you are no longer on a branch, putting you in "Detached Head State". This is what Git is doing behind the scenes when updating a submodule.</p>
+			<p>Using <code>--</code> as the object will use the current HEAD. It will discard any changes in your working directory.</p>
+		</div>
+
+		<div class="slide" id="slide-7">
+			<h2 class="cmd"></h2>
+		</div>
+
+		<nav>
+			<a href="#slide-1">1</a>
+			<a href="#slide-2">2</a>
+			<a href="#slide-3">3</a>
+			<a href="#slide-4">4</a>
+			<a href="#slide-5">5</a>
+			<a href="#slide-6">6</a>
+			<a href="#slide-7">7</a>
+			<a href="#slide-8">8</a>
+			<a href="#slide-9">9</a>
+			<a href="#slide-10">10</a>
+		</nav>
+
+	</body>
+</html>
