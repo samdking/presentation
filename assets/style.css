@@ -2,13 +2,15 @@ body { background: #000; padding: 5% 10%; font-family: helvetica, Arial, sans-se
 h1 { text-align: center; margin-top: 15%;}
 h2 { font-size: 2em;}
 h2 span { opacity: 0.6;}
+li { padding-top: 5px; padding-bottom: 5px}
 .loud { font-size: 1.5em; line-height: 2em;}
 .big { font-size: 5em;  }
 .medium { font-size: 3.5em; }
 .slide { display: none;}
 .slide:target { display: block; }
-.cmd { font-family: monaco, monospace; }
+.cmd { background: #333; font-family: monaco, monospace; opacity: 1; }
 nav { font-size: 20px; text-align: center; position: fixed; bottom: 20px; left: 0; width: 100%;}
 nav a { color: #CCC; padding: 5px; width: 25px; display: inline-block; text-decoration: none;}
 nav a.selected { color: yellow;}
 .slide pre { font-size: 0.8em; }
+.detail { display: none;}

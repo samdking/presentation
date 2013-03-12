@@ -20,84 +20,126 @@
 
 		<div class="slide" id="slide-3">
 			<h2>Modifying your working directory</h2>
-			<p>By editing, adding and deleting files, you modify your working directory. When this happens, Git notices your working directory is now different to HEAD, and suggests you stage the changes for committing.</p>
+			<p class="detail">By editing, adding and deleting files, you modify your working directory. When this happens, Git notices your working directory is now different to HEAD, and suggests you stage the changes for committing.</p>
+			<ul>
+				<li>Editing, adding, deleting files = modifying your working directory</li>
+				<li>If working directory different to HEAD - git suggests you stage your changes</li>
+			</ul>
 			<pre># Changes not staged for commit:
 #
 #	<span style="color:red">modified:   assets/style.css</span></pre>
-
 		</div>
 
 		<div class="slide" id="slide-4">
-			<h2 class="cmd">git add</h2>
-			<p>Git add (and also git rm and git mv) modify the index. GIT will then report that the <em>index</em> is different to HEAD, and ask you to create a new commit of the changes (moving the HEAD on).</p>
+			<h2><span class="cmd">git add</span></h2>
+			<p class="detail">Git add (and also git rm and git mv) modify the index. GIT will then report that the <em>index</em> is different to HEAD, and ask you to create a new commit of the changes (moving the HEAD on).</p>
+			<ul>
+				<li>git add, git rm and git mv modify your index</li>
+				<li>If index different to HEAD - git suggests you create a new commit.</li>
+			</ul>
+
 			<pre># Changes to be committed:
 #
 #	<span style="color: green">modified:   assets/style.css</span></pre>
-
 		</div>
 
 		<div class="slide" id="slide-5">
-			<h2 class="cmd">git commit</h2>
-			<p>Commit will add a new commit and move the HEAD pointer to that new commit.</p>
+			<h2><span class="cmd">git commit</h2>
+			<ul>
+				<li>Commit will add a new commit and move the HEAD pointer to that new commit.</li>
+			</ul>
 			<pre>[master b5d5aeb] My awesome commit
  1 files changed, 3 insertions(+), 1 deletions(-)</pre>
- 			<p>HEAD now points to <span class="cmd">b5d5aeb</span>
+ 			<ul>
+ 				<li>HEAD now points to <span class="cmd">b5d5aeb</span></li>
+ 			</ul>
 		</div>
 
 		<div class="slide" id="slide-6">
-			<h2 class="cmd">reset or checkout?</h2>
+			<h2><span class="cmd">reset or checkout?</span></h2>
 			<p><strong><span class="cmd">Checkout</span> offers an alternative view of your repository and its history.</strong> When you checkout, HEAD moves to another branch or commit.
 			<p><strong><span class="cmd">Reset</span> rewrites your history, allowing you to pretend part of your repository   didn't happen.</strong> When you reset, your history moves, leaving HEAD pointing to a different commit.
 		</div>
 
 		<div class="slide" id="slide-7">
-			<h2 class="cmd">git reset --soft</h2>
-			<h2 class="cmd">git reset <span>--mixed</span></h2>
-			<h2 class="cmd">git reset --hard</h2>
+			<h2><span class="cmd">git reset --soft</span></h2>
+			<h2><span class="cmd">git reset <span>--mixed</span></span></h2>
+			<h2><span class="cmd">git reset --hard</span></h2>
 		</div>
 
 		<div class="slide" id="slide-8">
-			<h2 class="cmd">git reset HEAD</h2>
-			<p>HEAD points to the last snapshop, the current commit you are on. Resetting the HEAD will simply discard any staged changes in your index. A <span class="cmd">--mixed</span> reset (the default) does this, whilst preserving your working directory.
-			<p>A <span class="cmd">--hard</span> flag is more destructive, and will throw away any changes in your working directory, back to your last commit (HEAD).</p>
+			<h2><span class="cmd">git reset HEAD</span></h2>
+			<p class="detail">HEAD points to the last snapshop, the current commit you are on. Resetting the HEAD will simply discard any staged changes in your index. A <span class="cmd">--mixed</span> reset (the default) does this, whilst preserving your working directory.</p>
+			<p class="detail">A <span class="cmd">--hard</span> flag is more destructive, and will throw away any changes in your working directory, back to your last commit (HEAD).</p>
+			<ul>
+				<li>HEAD points to the last snapshot</li>
+				<li>Resetting HEAD discards any staged changes in the index</li>
+				<li>A <span class="cmd">--mixed</span> reset (default) will preserve your working directory</li>
+				<li>A <span class="cmd">--hard</span> flag throws away any changes in your working directory</li>
+			</ul>
 		</div>
 
 		<div class="slide" id="slide-9">
-			<h3 class="cmd">git reset HEAD~1 --soft</h3>
+			<h3><span class="cmd">git reset HEAD~1 --soft</span></h3>
 			<p>Moves HEAD back one commit, preserving the comitted files in the index.</p>
-			<h3 class="cmd">git reset 9e5e64a</h3>
+			<h3><span class="cmd">git reset 9e5e64a</span></h3>
 			<p>Moves HEAD to a specific commit</p>
-			<h3 class="cmd">git reset branch</h3>
+			<h3><span class="cmd">git reset branch</span></h3>
 			<p>Moves HEAD to commit, identified by a branch</p>
 		</div>
 
 		<div class="slide" id="slide-10">
-			<h2 class="cmd">git checkout</h2>
-			<p>Git checkout will always modify your working directory - you're <em>checking out</em> code changes so you can work on them.</p>
-			<p>HEAD moves to point to a different commit. You are not changing anything, you're just moving around your repository. Checkout won't lose any of your changes.</p>
-			<p>Checking out a commit hash means you are no longer on a branch, putting you in "Detached Head State". This is what Git is doing behind the scenes when updating a submodule.</p>
+			<h3>Deploying live</h3>
+			<ul>
+				<li>When pushing to the live repository, you add commits, updating the HEAD</li>
+				<li>However, unless prompted, GIT will not update the working directory.</li>
+				<li>Hence the need for a post-receive hook</li>
+				<li>This runs <span class="cmd">git reset HEAD --hard</span></li>
+			</ul>
 		</div>
 
 		<div class="slide" id="slide-11">
-			<h3 class="cmd">git checkout my-branch</h3>
-			<p>Checkout the branch my-branch</p>
-			<h3 class="cmd">git checkout master~5 index.php</h3>
-			<p>Checkout the state of index.php, 5 commits ago on the master branch</p>
-			<h3 class="cmd">git checkout -- test.php</h3>
-			<p>Reverts current changes in a file, back to what it was in HEAD</p>
+			<h2><span class="cmd">git checkout</span></h2>
+			<p class="detail">Git checkout will always modify your working directory - you're <em>checking out</em> code changes so you can work on them.</p>
+			<p class="detail">HEAD moves to point to a different commit. You are not changing anything, you're just moving around your repository. Checkout won't lose any of your changes.</p>
+			<p class="detail">Checking out a commit hash means you are no longer on a branch, putting you in "Detached Head State". This is what Git is doing behind the scenes when updating a submodule.</p>
+			<ul>
+				<li>Always modified your working directory</li>
+				<li>HEAD pointer moves to different commit.</li>
+				<li>Nothing changes, you just move around your repository.</li>
+				<li>Won't lose any changes</li>
+				<li>If you Checkout a commit hash, you'll have a "detached head"</li>
+				<li>This is what a submodule update does</li>
 		</div>
 
 		<div class="slide" id="slide-12">
-			<h2 class="cmd">git submodule update</h2>
-			<p>Update the commit of a submodule to match what the master repository says it should be on.</p>
-			<p>The master project does not care about anything more in the sub repository, other than the commit it should be pointing at.</p>
-			<p>If you master repository detects it should be on a different commit to what the submodule is on, Git will tell you the submodule has "new commits" and needs to be updated.</p>
+			<h3><span class="cmd">git checkout my-branch</span></h3>
+			<p>Checkout the branch my-branch</p>
+			<h3><span class="cmd">git checkout master~5 index.php</span></h3>
+			<p>Checkout the state of index.php, 5 commits ago on the master branch</p>
+			<h3><span class="cmd">git checkout -- test.php</span></h3>
+			<p>Reverts current changes in a file, back to what it was in HEAD</p>
 		</div>
 
 		<div class="slide" id="slide-13">
+			<h2><span class="cmd">git submodule update</span></h2>
+			<ul>
+				<li>Update the commit of a submodule to match what the master repository says it should be on.</li>
+				<li>Master project does not care about anything in the sub repository, other than the commit it should be pointing at.</li>
+				<li>If you master repository detects it should be on a different commit to what the submodule is on, Git will tell you the submodule has "new commits" and needs to be updated.</li>
+			</ul>
+		</div>
+
+		<div class="slide" id="slide-14">
 			<h2>A detached HEAD</h2>
-			<p>When you update a submodule, That repository is no longer pointing at a branch, it is pointing directly to a commit. You can make further commits in this state, however since there is no branch referencing it, it's easy to get lost.</p>
-			<p>If you want to make a commit in a submodule, checkout the relevant branch, merge in the remote changes, and you're good to go.</p>
+			<p class="detail">When you update a submodule, That repository is no longer pointing at a branch, it is pointing directly to a commit. You can make further commits in this state, however since there is no branch referencing it, it's easy to get lost.</p>
+			<p class="detail">If you want to make a commit in a submodule, checkout the relevant branch, merge in the remote changes, and you're good to go.</p>
+			<ul>
+				<li>When you update a submodule, the repo is no longer pointing at a branch</li>
+				<li>Detached head mode</li>
+				<li>Easy for commits to be lost since there is no referenced branch</li>
+				<li>To commit in a submodule, checkout a branch and commit on this.</li>
+			</ul>
 		</div>
 
 		<nav>
@@ -114,6 +156,7 @@
 			<a href="#slide-11">11</a>
 			<a href="#slide-12">12</a>
 			<a href="#slide-13">13</a>
+			<a href="#slide-14">14</a>
 		</nav>
 
 	</body>
