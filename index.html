@@ -142,6 +142,33 @@
 			</ul>
 		</div>
 
+		<div class="slide" id="slide-15">
+			<h2>Branching</h2>
+			<ul>
+				<li>Go off in another direction from a base commit</li>
+				<li>The commit at which you branched off at is used when merging back in</li>
+				<li>When merging back in to a base branch (master/develop), if nothing has changed, the base branch "fast-forwards" to your branch's commit.</li>
+				<li>If base branch has diverged, it will do a recursive merge, creating a merge commit.</li>
+			</ul>
+		</div>
+
+		<div class="slide" id="slide-16">
+			<h2>Rebasing</h2>
+			<ul>
+				<li>One way to avoid a recursive merge is to rebase.</li>
+				<li>This replays your commits on top of the merged in code.</li>
+			</ul>
+			<pre>git branch
+* <span style="color: green">develop</span>
+  master
+git rebase origin/develop
+First, rewinding head to replay your work on top of it...
+Applying: Updated CMS</pre>
+			<ul>
+				<li>Your commits will end up after those merged in, as if you'd merged initially.</li>
+			</ul>
+		</div>
+
 		<nav>
 			<a href="#slide-1">1</a>
 			<a href="#slide-2">2</a>
@@ -157,6 +184,8 @@
 			<a href="#slide-12">12</a>
 			<a href="#slide-13">13</a>
 			<a href="#slide-14">14</a>
+			<a href="#slide-15">15</a>
+			<a href="#slide-16">16</a>
 		</nav>
 
 	</body>
