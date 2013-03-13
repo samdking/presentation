@@ -145,9 +145,16 @@
 		<div class="slide" id="slide-15">
 			<h2>Branching</h2>
 			<ul>
-				<li>Go off in another direction from a base commit</li>
+				<li>Go off in another direction, from a base commit</li>
 				<li>The commit at which you branched off at is used when merging back in</li>
-				<li>When merging back in to a base branch (master/develop), if nothing has changed, the base branch "fast-forwards" to your branch's commit.</li>
+				<li>When merging back in to a base branch (e.g. master or develop), if nothing has changed, the base branch "fast-forwards" to your branch's commit.</li>
+			</ul>
+			<pre>$ git merge hotfix
+Updating f42c576..3a0874c
+Fast forward
+ README |    1 <span style="color: red">-</span>
+ 1 files changed, 0 insertions(+), 1 deletions(-)</pre>
+			<ul>
 				<li>If base branch has diverged, it will do a recursive merge, creating a merge commit.</li>
 			</ul>
 		</div>
@@ -156,12 +163,12 @@
 			<h2>Rebasing</h2>
 			<ul>
 				<li>One way to avoid a recursive merge is to rebase.</li>
-				<li>This replays your commits on top of the merged in code.</li>
+				<li>This replays your commits on top of the merged in commits.</li>
 			</ul>
-			<pre>git branch
+			<pre>$ git branch
 * <span style="color: green">develop</span>
   master
-git rebase origin/develop
+$ git rebase origin/develop
 First, rewinding head to replay your work on top of it...
 Applying: Updated CMS</pre>
 			<ul>
